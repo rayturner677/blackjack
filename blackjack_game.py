@@ -36,12 +36,13 @@ def blackjack():
     player1.append(cards.pop())
     dealer.append(cards.pop())
 
+    # player's turn
     while True:
-        print('Your hand:', player1, hand_value(player1))
+        print('Your hand:', hand_value(player1))
         print('dealer top card:', dealer[0])
         choice = input('Would you like to hit or stay?').strip()
-        if hand_value(player1) == 21 or hand_value(dealer):
-            print('Blackjack')
+        if hand_value(player1) == 21:
+            print("Blackjack")
             break
         if choice == 'hit':
             hand_value(player1) < hand_value(dealer)
@@ -52,11 +53,12 @@ def blackjack():
 
         if sum(player1) > 21:
             print(' Player1 BUSTED')
+            print("Dealer wins!")
             break
-
+    # dealer turn
     while hand_value(player1) < 21 and hand_value(dealer) < 21:
         print(hand_value(player1))
-        response = input('You ready?')
+        response = input('See result????')
         if hand_value(dealer) == 21:
             print(Blackjack)
         if hand_value(dealer) <= 17:
@@ -66,21 +68,22 @@ def blackjack():
 
         if hand_value(dealer) > 21:
             print(' Dealer BUSSED')
+            print("Player wins!")
             break
 
         elif response == 'yes':
             break
 
-    if hand_value(player1) > 21:
-        print('Dealer wins')
+    if hand_value(player1) == 21:
+        print("Blackjack")
 
-    if hand_value(dealer) > 21:
-        print('Player1 wins')
+    if hand_value(dealer) == 21:
+        print("Blackjack")
 
-    if hand_value(player1) > hand_value(dealer):
+    if hand_value(player1) > hand_value(dealer) and hand_value(player1) < 22:
         print('Player wins')
 
-    if hand_value(dealer) > hand_value(player1):
+    if hand_value(dealer) > hand_value(player1) and hand_value(dealer) < 22:
         print('Dealer wins')
 
 
